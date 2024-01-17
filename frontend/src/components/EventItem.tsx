@@ -1,5 +1,6 @@
 import classes from './EventItem.module.css';
 import Event from '../models/Event';
+import { Link } from 'react-router-dom';
 
 export interface EventItemProps {
   event: Event;
@@ -17,7 +18,7 @@ function EventItem({ event }: EventItemProps) {
       <time>{event.date}</time>
       <p>{event.description}</p>
       <menu className={classes.actions}>
-        <a href="edit">Edit</a>
+        <Link to={`edit/${event.id}`}>Edit</Link>
         <button onClick={startDeleteHandler}>Delete</button>
       </menu>
     </article>

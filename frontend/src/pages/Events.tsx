@@ -2,7 +2,7 @@ import React from "react";
 import Event from "../models/Event";
 import EventsList from "../components/EventsList";
 
-const DUMMY_EVENTS: Event[] = [
+export const DUMMY_EVENTS: Event[] = [
   {
     id: "e1",
     title: "Programming for everyone",

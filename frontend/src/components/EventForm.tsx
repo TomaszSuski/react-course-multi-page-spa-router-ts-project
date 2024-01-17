@@ -1,11 +1,19 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import Event from "../models/Event";
 
-import classes from './EventForm.module.css';
+import classes from "./EventForm.module.css";
 
-function EventForm({ method, event }) {
+type EventFormMethods = "POST" | "DELETE";
+
+export interface EventFormProps {
+  method: EventFormMethods;
+  event: Event;
+}
+
+function EventForm({ method, event }: EventFormProps) {
   const navigate = useNavigate();
   function cancelHandler() {
-    navigate('..');
+    navigate("..");
   }
 
   return (
@@ -24,7 +32,7 @@ function EventForm({ method, event }) {
       </p>
       <p>
         <label htmlFor="description">Description</label>
-        <textarea id="description" name="description" rows="5" required />
+        <textarea id="description" name="description" rows={5} required />
       </p>
       <div className={classes.actions}>
         <button type="button" onClick={cancelHandler}>

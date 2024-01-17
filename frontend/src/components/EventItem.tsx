@@ -1,6 +1,11 @@
 import classes from './EventItem.module.css';
+import Event from '../models/Event';
 
-function EventItem({ event }) {
+export interface EventItemProps {
+  event: Event;
+}
+
+function EventItem({ event }: EventItemProps) {
   function startDeleteHandler() {
     // ...
   }

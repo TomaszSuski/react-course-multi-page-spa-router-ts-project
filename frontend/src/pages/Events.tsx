@@ -1,39 +1,41 @@
-import React from "react";
+import React, { useEffect, useState} from "react";
 import Event from "../models/Event";
 import EventsList from "../components/EventsList";
 
-export const DUMMY_EVENTS: Event[] = [
-  {
-    id: "e1",
-    title: "Programming for everyone",
-    description:
-      "Learn the basics of programming in HTML, CSS, and JavaScript.",
-    date: "2021-05-12",
-    image: "images/programming-event.jpg",
-  },
-  {
-    id: "e2",
-    title: "Networking for introverts",
-    description: "Learn how to network effectively with other introverts.",
-    date: "2021-05-30",
-    image: "images/introvert-event.jpg",
-  },
-  {
-    id: "e3",
-    title: "Networking for extroverts",
-    description: "Learn how to network effectively with other extroverts.",
-    date: "2021-06-10",
-    image: "images/extrovert-event.jpg",
-  },
-];
-
 export interface EventsPageProps {}
 
-export default function EventsPage(props: EventsPageProps) {
+export type ErrorType = string | null;
+
+function EventsPage() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [fetchedEvents, setFetchedEvents] = useState<Event[]>([]);
+  const [error, setError] = useState<ErrorType>(null);
+
+  useEffect(() => {
+    async function fetchEvents() {
+      setIsLoading(true);
+      const response = await fetch('http://localhost:8080/events');
+
+      if (!response.ok) {
+        setError('Fetching events failed.');
+      } else {
+        const resData = await response.json();
+        setFetchedEvents(resData.events);
+      }
+      setIsLoading(false);
+    }
+
+    fetchEvents();
+  }, []);
   return (
     <>
-      <h1>Events</h1>
-      <EventsList events={DUMMY_EVENTS} />
+      <div style={{ textAlign: 'center' }}>
+        {isLoading && <p>Loading...</p>}
+        {error && <p>{error}</p>}
+      </div>
+      {!isLoading && fetchedEvents && <EventsList events={fetchedEvents} />}
     </>
   );
 }
+
+export default EventsPage;

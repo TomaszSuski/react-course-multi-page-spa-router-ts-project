@@ -1,4 +1,6 @@
-import React from 'react';
+import React from "react";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes";
 
 // Challenge / Exercise
 
@@ -23,7 +25,7 @@ import React from 'react';
 // BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
 
 function App() {
-  return <div></div>;
+  return <RouterProvider router={router} />;
 }
 
 export default App;

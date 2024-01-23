@@ -1,12 +1,12 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useRouteLoaderData } from "react-router-dom";
 import EventItem from "../components/EventItem";
 import Event from "../models/Event";
 
 export interface EventDetailsPageProps {}
 
 export default function EventDetailsPage(props: EventDetailsPageProps) {
-  const data = useLoaderData() as { event: Event };
+  const data = useRouteLoaderData("event") as { event: Event };
 
   return (
     <>

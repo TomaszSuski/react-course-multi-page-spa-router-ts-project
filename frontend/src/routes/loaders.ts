@@ -18,7 +18,7 @@ export async function eventsLoader() {
   }
 }
 
-export async function eventLoader({
+export async function eventDetailsLoader({
   request,
   params,
 }: {

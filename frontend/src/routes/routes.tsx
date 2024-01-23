@@ -7,11 +7,13 @@ import EventDetailsPage from "../pages/EventDetails";
 import NewEventPage from "../pages/NewEvent";
 import EditEventPage from "../pages/EditEvent";
 import { eventsLoader } from "./loaders";
+import ErrorPage from "../pages/Error";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <RootPage />,
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
 

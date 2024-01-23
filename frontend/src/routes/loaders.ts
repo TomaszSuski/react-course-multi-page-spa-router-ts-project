@@ -4,7 +4,8 @@ export async function eventsLoader() {
     if (!response.ok) {
       throw new Error("Failed to fetch events.");
     } else {
-      const resData = await response.json();
-      return resData.events;
+    //   const resData = await response.json();
+    //   return resData.events;
+    return response;
     }
   }

@@ -6,7 +6,10 @@ import EventsList from "../components/EventsList";
 export interface EventsPageProps {}
 
 function EventsPage() {
-  const data  = useLoaderData() as Event[];
+  // const data  = useLoaderData() as Event[];
+  const response = useLoaderData() as { events: Event[] };
+  const data = response.events;
+
   return (
     <>
       <EventsList events={data} />

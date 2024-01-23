@@ -26,8 +26,11 @@ export default function ErrorPage(props: ErrorPageProps) {
   }
 
   if (error.status === 500) {
-    if (typeof error.data === "string") {
-      message = JSON.parse(error.data).message;
+    // if (typeof error.data === "string") {
+    //   message = JSON.parse(error.data).message;
+    // }
+    if (typeof error.data === "object" && error.data !== null) {
+      message = error.data.message;
     }
   }
 

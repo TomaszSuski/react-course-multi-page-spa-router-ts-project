@@ -17,3 +17,21 @@ export async function eventsLoader() {
     return response;
   }
 }
+
+export async function eventLoader({
+  request,
+  params,
+}: {
+  request: any;
+  params: any;
+}) {
+  const id = params.id;
+  const response = await fetch(`http://localhost:8080/events/${id}`);
+
+  if (!response.ok) {
+    throw json({ message: "Could not load event" }, { status: 500 });
+  } else {
+
+    return response;
+  }
+}

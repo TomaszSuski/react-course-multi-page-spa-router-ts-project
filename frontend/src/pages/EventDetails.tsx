@@ -1,19 +1,16 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-// import EventItem from "../components/EventItem";
+import { useLoaderData } from "react-router-dom";
+import EventItem from "../components/EventItem";
+import Event from "../models/Event";
 
 export interface EventDetailsPageProps {}
 
 export default function EventDetailsPage(props: EventDetailsPageProps) {
-  const { id } = useParams();
-  // const event = DUMMY_EVENTS.find((event) => event.id === id);
-  // if (!event) {
-  //   return <h1>Event not found!</h1>;
-  // }
+  const data = useLoaderData() as { event: Event };
+
   return (
     <>
-      <h1>{`Event ${id} Details`}</h1>
-      {/* <EventItem event={event} /> */}
+      <EventItem event={data.event} />
     </>
   );
 }

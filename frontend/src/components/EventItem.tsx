@@ -18,7 +18,7 @@ function EventItem({ event }: EventItemProps) {
       <time>{event.date}</time>
       <p>{event.description}</p>
       <menu className={classes.actions}>
-        <Link to={`${event.id}/edit`}>Edit</Link>
+        <Link to="edit">Edit</Link>
         <button onClick={startDeleteHandler}>Delete</button>
       </menu>
     </article>

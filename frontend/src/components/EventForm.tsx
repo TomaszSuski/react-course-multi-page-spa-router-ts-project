@@ -6,8 +6,8 @@ import classes from "./EventForm.module.css";
 type EventFormMethods = "POST" | "DELETE";
 
 export interface EventFormProps {
-  method: EventFormMethods;
-  event: Event;
+  method?: EventFormMethods;
+  event?: Event;
 }
 
 function EventForm({ method, event }: EventFormProps) {

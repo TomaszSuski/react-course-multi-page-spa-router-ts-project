@@ -1,11 +1,21 @@
-import { Form, useNavigation } from "react-router-dom";
+import { useFetcher, useNavigation } from "react-router-dom";
 import classes from "./NewsletterSignup.module.css";
 
 function NewsletterSignup() {
   const navigation = useNavigation();
+  // fetcher pozwala na wywołanie akcji lub loadera bez nawigowania do route,
+  // do którego akcja lub loader jest przypisany
+  const fetcher = useFetcher();
+
   const isSubmitting = navigation.state === "submitting";
   return (
-    <Form method="post" className={classes.newsletter}>
+    // fetcher.Form działa podobnie jak Form ale nie wywołuje przekierowań, tak samo fetcher.loader
+    // należy wskazać akcję lub loader, który ma być wywołany
+    <fetcher.Form
+      action="/newsletter"
+      method="post"
+      className={classes.newsletter}
+    >
       <input
         type="email"
         name="email"
@@ -15,7 +25,7 @@ function NewsletterSignup() {
       <button disabled={isSubmitting}>
         {isSubmitting ? "Submitting..." : "Sign up"}
       </button>
-    </Form>
+    </fetcher.Form>
   );
 }
 

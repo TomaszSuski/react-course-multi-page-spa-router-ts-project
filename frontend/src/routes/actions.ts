@@ -1,7 +1,7 @@
 import { json, redirect } from "react-router-dom";
 import Event from "../models/Event";
 
-export async function addNewEvent({
+export async function submitEvent({
   request,
   params,
 }: {
@@ -16,8 +16,10 @@ export async function addNewEvent({
     image: data.get("image"),
   } as Event;
 
-  const response = await fetch("http://localhost:8080/events", {
-    method: "POST",
+  const url = params.id ? `http://localhost:8080/events/${params.id}` : "http://localhost:8080/events";
+
+  const response = await fetch(url, {
+    method: request.method,
     headers: {
       "Content-Type": "application/json",
     },

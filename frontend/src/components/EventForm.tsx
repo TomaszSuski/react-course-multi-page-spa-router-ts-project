@@ -3,10 +3,10 @@ import Event from "../models/Event";
 
 import classes from "./EventForm.module.css";
 
-type EventFormMethods = "POST" | "DELETE";
+type EventFormMethods = "POST" | "PATCH";
 
 export interface EventFormProps {
-  method?: EventFormMethods;
+  method: EventFormMethods;
   event?: Event;
 }
 
@@ -21,7 +21,7 @@ function EventForm({ method, event }: EventFormProps) {
   }
 
   return (
-    <Form method="post" className={classes.form}>
+    <Form method={method} className={classes.form}>
       <p>
         <label htmlFor="title">Title</label>
         <input

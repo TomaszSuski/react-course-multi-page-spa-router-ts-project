@@ -8,5 +8,5 @@ export interface EditEventPageProps {}
 export default function EditEventPage(props: EditEventPageProps) {
   const data = useRouteLoaderData("event") as { event: Event };
 
-  return <EventForm event={data.event} />;
+  return <EventForm event={data.event} method="PATCH" />;
 }

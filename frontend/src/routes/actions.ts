@@ -35,3 +35,22 @@ export async function addNewEvent({
     return redirect("/events");
   }
 }
+
+export async function deleteEvent({
+  request,
+  params,
+}: {
+  request: any;
+  params: any;
+}) {
+  const id = params.id;
+  const response = await fetch(`http://localhost:8080/events/${id}`, {
+    method: request.method,
+  });
+
+  if (!response.ok) {
+    throw json({ message: "Could not delete event" }, { status: 500 });
+  } else {
+    return redirect("/events");
+  }
+}

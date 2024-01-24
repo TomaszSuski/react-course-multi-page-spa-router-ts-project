@@ -28,6 +28,9 @@ export async function submitEvent({
     body: JSON.stringify(eventData),
   });
 
+  // ten serwer zwraca błędy walidacji z kodem 422
+  // wtedy nie chcemy przekierować na stronę eventów
+  // tylko zwrócić response z błędem z serwera
   if (response.status === 422) {
     return response;
   }

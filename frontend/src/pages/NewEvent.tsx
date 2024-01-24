@@ -1,7 +1,8 @@
 import React from "react";
+import EventForm from "../components/EventForm";
 
 export interface NewEventPageProps {}
 
 export default function NewEventPage(props: NewEventPageProps) {
-  return <h1>New Event</h1>;
+  return <EventForm />;
 }

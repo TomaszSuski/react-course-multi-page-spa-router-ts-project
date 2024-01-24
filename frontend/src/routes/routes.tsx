@@ -8,6 +8,7 @@ import NewEventPage from "../pages/NewEvent";
 import EditEventPage from "../pages/EditEvent";
 import { eventDetailsLoader, eventsLoader } from "./loaders";
 import ErrorPage from "../pages/Error";
+import { addNewEvent } from "./actions";
 
 export const router = createBrowserRouter([
   {
@@ -38,7 +39,7 @@ export const router = createBrowserRouter([
               { path: "edit", element: <EditEventPage /> },
             ],
           },
-          { path: "new", element: <NewEventPage /> },
+          { path: "new", element: <NewEventPage />, action: addNewEvent },
         ],
       },
     ],

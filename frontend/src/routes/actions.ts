@@ -16,7 +16,9 @@ export async function submitEvent({
     image: data.get("image"),
   } as Event;
 
-  const url = params.id ? `http://localhost:8080/events/${params.id}` : "http://localhost:8080/events";
+  const url = params.id
+    ? `http://localhost:8080/events/${params.id}`
+    : "http://localhost:8080/events";
 
   const response = await fetch(url, {
     method: request.method,
@@ -25,6 +27,10 @@ export async function submitEvent({
     },
     body: JSON.stringify(eventData),
   });
+
+  if (response.status === 422) {
+    return response;
+  }
 
   if (!response.ok) {
     throw json({ message: "Could not create event" }, { status: 500 });

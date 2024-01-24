@@ -9,6 +9,8 @@ import EditEventPage from "../pages/EditEvent";
 import { eventDetailsLoader, eventsLoader } from "./loaders";
 import ErrorPage from "../pages/Error";
 import { deleteEvent, submitEvent } from "./actions";
+import NewsletterPage from "../pages/Newsletter";
+import { action as newsletterAction } from "../pages/Newsletter";
 
 export const router = createBrowserRouter([
   {
@@ -17,7 +19,6 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
-
       {
         path: "events",
         element: <EventsLayoutPage />,
@@ -42,6 +43,11 @@ export const router = createBrowserRouter([
           },
           { path: "new", element: <NewEventPage />, action: submitEvent },
         ],
+      },
+      {
+        path: "newsletter",
+        element: <NewsletterPage />,
+        action: newsletterAction,
       },
     ],
   },

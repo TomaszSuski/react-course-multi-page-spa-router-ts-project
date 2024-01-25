@@ -2,7 +2,6 @@ import { Params, defer, json } from "react-router-dom";
 
 // by użyć defer trzeba zwrócić promise
 async function loadEvents() {
-  console.log("in load events");
   const response = await fetch("http://localhost:8080/events");
 
   if (!response.ok) {
@@ -28,7 +27,6 @@ async function loadEvents() {
 }
 
 async function loadEventDetails(id: string) {
-  console.log("in loader", id);
   const response = await fetch(`http://localhost:8080/events/${id}`);
 
   if (!response.ok) {
@@ -51,8 +49,6 @@ export async function eventDetailsLoader({
   request: Request;
   params: Params;
 }) {
-  console.log(request);
-  console.log(params);
   const id = params.id as string;
   // async/await w loaderze działa tak, że komponent wyrenderuje się po otrzymaniu danych z loadera z await
   // a reszta będzie się ładowała w tle już po wyrenderowaniu
